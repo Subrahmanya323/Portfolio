@@ -1,0 +1,476 @@
+/* Portfolio Website Styles - Subrahmanya L. Hebbar */
+:root {
+  --bg-dark: #1a1a1a;
+  --accent: #e60073; /* This will be the color of the image accent */
+  --text-main: #f0f0f0;
+  --text-muted: #b0b0b0;
+  --divider: #292929;
+  --font-main: 'Montserrat', Arial, sans-serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  font-family: var(--font-main);
+  scroll-behavior: smooth;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 96%;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  z-index: 100;
+  border-bottom: 0.5px solid var(--divider);
+  font-size: 1.1rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 0.5rem 0.8rem;
+  letter-spacing: 0.02em;
+}
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  margin-left: 1rem;
+}
+
+.btn.hire-me {
+  margin-left: 2rem;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 700;
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(230,0,115,0.18);
+  position: relative;
+  top: 0;
+  right: 0;
+  white-space: nowrap;
+}
+
+.btn.outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+.btn.outline:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.section {
+  padding: 4rem 2rem 2rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80vh;
+  padding-top: 3rem;
+  padding-left: 2rem;
+  gap: 2rem;
+}
+.hero-content {
+  max-width: 600px;
+}
+.greeting {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.name-accent {
+  color: var(--accent);
+}
+.hero h1 {
+  font-size: 2.8rem;
+  margin: 0.5rem 0 0.2rem 0;
+  font-weight: 700;
+}
+.tagline {
+  font-size: 1.5rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.intro {
+  color: var(--text-main);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  align-items: center;
+  transform: translateX(-100px);
+}
+.social-links img {
+  width: 32px;
+  height: 32px;
+  filter: none;
+  background: #232323;
+  border-radius: 6px;
+  padding: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.social-links a:hover img {
+  background: var(--accent);
+  box-shadow: 0 2px 8px rgba(230,0,115,0.18);
+}
+
+/* START OF MODIFIED HERO IMAGE SECTION 
+  The old .hero-image and .hero-image img styles are replaced below.
+*/
+.hero-image-container { /* This existing container controls overall padding for the image area */
+  padding-right: 10rem; /* Kept from your original CSS */
+  display: flex; /* Added to help center .hero-image if needed */
+  justify-content: center; /* Added to help center .hero-image if needed */
+  align-items: center; /* Added to help center .hero-image if needed */
+}
+
+.hero-image {
+  flex-shrink: 0; /* Kept from original */
+  /* display: flex; /* Kept from original, useful if you ever put more than just the img inside */
+  /* justify-content: center; /* Kept from original */
+  /* align-items: center; /* Kept from original */
+  
+  /* NEW STYLES FOR CIRCULAR SHAPE & ACCENT */
+  width: 480px; /* Adjust this to your preferred diameter */
+  height: 480px; /* Should be same as width for a perfect circle */
+  border-radius: 50%; /* Makes the container circular */
+  overflow: hidden; /* Clips the image and the pseudo-element to the circle */
+  position: relative; /* For positioning the ::after pseudo-element */
+  margin: 0 auto; /* Ensures centering if parent flex settings change or in block context */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2); /* Optional: adds some depth */
+}
+
+.hero-image img {
+  display: block;
+  width: 100%; /* Image fills the circular .hero-image container */
+  height: 100%; /* Image fills the circular .hero-image container */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  filter: grayscale(100%); /* Converts the image to black and white */
+  transition: filter 0.3s ease; /* Smooth transition for hover effect */
+
+  /* Properties like border, specific max-width, explicit aspect-ratio,
+     and background are removed as they are now handled by .hero-image
+     or are no longer needed. */
+}
+
+/* Optional: Remove grayscale on hover */
+.hero-image:hover img {
+  filter: grayscale(0%);
+}
+
+/* Red bottom accent for .hero-image */
+.hero-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0; /* Position at the bottom of .hero-image */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Cover the full width of the circle's base */
+  height: 25%; /* Adjust height to control how much of the bottom is covered by the accent's area. e.g., 20-30% */
+  background-color: transparent; /* Makes the pseudo-element itself transparent */
+
+  /* This border will be the visible red line, curved by the pseudo-element's own border-radius */
+  border-bottom: 12px solid var(--accent); /* Adjust thickness (12px) and color (var(--accent)) */
+  
+  /* Curves the bottom of the pseudo-element itself, which in turn curves its border-bottom.
+     Value should be half of the .hero-image width/height. For 320px diameter, radius is 160px. */
+  border-radius: 0 0 160px 160px; 
+                                  
+  box-sizing: border-box; /* Ensures border is included in width/height calculation */
+  pointer-events: none; /* So the accent doesn't interfere with hovering the image if needed */
+}
+/* END OF MODIFIED HERO IMAGE SECTION */
+/* --------------------------- */
+
+.about h2, .experience h2, .resume h2, .skills h2, .projects h2, .contact h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.experience-item, .project-item, .skills-category {
+  background: #222;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.company {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.duration {
+  color: var(--text-muted);
+  margin-left: 1rem;
+}
+.skills-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.skills-category ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.skills-category li {
+  background: var(--divider);
+  color: var(--text-main);
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 5px;
+  margin: 0.2rem 0.4rem 0.2rem 0;
+  font-size: 1rem;
+}
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.project-item {
+  flex: 1 1 320px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+}
+.contact-form input, .contact-form textarea {
+  background: #222;
+  color: var(--text-main);
+  border: 1px solid var(--divider);
+  border-radius: 6px;
+  padding: 0.8rem;
+  font-size: 1rem;
+  resize: none;
+}
+.contact-form button {
+  align-self: flex-start;
+}
+.contact-info {
+  margin-top: 1.5rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 2rem;
+}
+.footer {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem 0 1rem 0;
+  font-size: 1rem;
+  border-top: 1px solid var(--divider);
+  background: var(--bg-dark);
+}
+.utility-icons {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 200;
+}
+.utility-btn {
+  background: #222;
+  color: var(--accent);
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: background 0.2s, color 0.2s;
+}
+.utility-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-image-container {
+    padding-right: 0; /* Remove padding for centered layout on mobile */
+    /* margin-bottom: 2rem; /* Optional: add some space below image on mobile */
+  }
+
+  /* Adjust .hero-image size and its ::after pseudo-element for smaller screens */
+  .hero-image {
+    width: 220px; /* Your original mobile size for the image */
+    height: 220px;
+  }
+
+  .hero-image::after {
+    border-radius: 0 0 110px 110px; /* Half of new diameter (220px / 2) */
+    border-bottom-width: 10px; /* Optionally adjust thickness */
+    height: 20%; /* Optionally adjust coverage area */
+  }
+  /* The old rule '.hero-image img { max-width: 220px; }' is no longer needed
+     as .hero-image now controls the size and the img fills it. */
+
+  .skills-categories, .project-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .btn.hire-me {
+    margin-left: 0;
+    margin-top: 1rem;
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+}
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .section {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .footer {
+    padding: 1rem 0;
+  }
+
+  /* Further reduce image size on very small screens if desired */
+  .hero-image {
+    width: 180px; 
+    height: 180px;
+  }
+
+  .hero-image::after {
+    border-radius: 0 0 90px 90px; /* Half of 180px */
+    border-bottom-width: 8px; 
+    height: 20%; 
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+p, ul, li {
+  line-height: 1.7;
+  margin-bottom: 0.5em;
+}
+
+/* Education Timeline */
+.education-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  position: relative;
+  padding-left: 2rem;
+}
+.education-timeline:before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--divider);
+  border-radius: 2px;
+}
+.education-card {
+  background: #232323;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  position: relative;
+  margin-left: 1rem;
+  border-left: 6px solid var(--accent);
+}
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.edu-institution {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+.edu-year {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.edu-details {
+  color: var(--text-main);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.edu-location {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
